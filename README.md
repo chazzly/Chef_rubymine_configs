@@ -1,0 +1,1 @@
+copy files from 'live_templates' to 'C:\Users\<USER>\.RubyMine80\config\templates'

@@ -1,0 +1,101 @@
+<templateSet group="Chef">
+  <template name="directory" value="directory '$CURSOR$' do&#10;  $STUFF$&#10;end" description="Directory resource" toReformat="false" toShortenFQNames="true">
+    <variable name="CURSOR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="file" value="file '$FILE$' do&#10;  source '$SOURCE$'&#10;  owner '$OWNER$'&#10;  group '$OWNER$'&#10;  mode '$MODE$'&#10;end" description="File Resource" toReformat="false" toShortenFQNames="true">
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SOURCE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OWNER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="cookbook_file" value="cookbook_file '$CURSOR$' do&#10;  $STUFF$&#10;end" description="cookbook_file" toReformat="false" toShortenFQNames="true">
+    <variable name="CURSOR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="remote_file" value="remote_file '$FILE$' do&#10;  source '$SOURCE$'&#10;  owner '$OWNER$'&#10;  group '$OWNER$'&#10;  mode '$MODE$'&#10;end" description="remote_file" toReformat="false" toShortenFQNames="true">
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SOURCE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OWNER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="lvm_volume_group" value="lvm_volume_group '$GROUP$' do&#10;  $STUFF$&#10;end" description="lvm_volume_group" toReformat="false" toShortenFQNames="true">
+    <variable name="GROUP" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="execute" value="execute '$CURSOR$' do&#10;  action :nothing&#10;  $STUFF$&#10;end" description="excute" toReformat="false" toShortenFQNames="true">
+    <variable name="CURSOR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="ruby_block" value="ruby_block '$TITLE$' do&#10;  block do&#10;    $STUFF$&#10;  end&#10;end" description="ruby_block" toReformat="false" toShortenFQNames="true">
+    <variable name="TITLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="link" value="link '$LINK$' do&#10;  to '$SOURCE$'&#10;  link_type :symbolic&#10;end" description="link" toReformat="false" toShortenFQNames="true">
+    <variable name="LINK" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SOURCE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="replace_or_add" value="replace_or_add '$TITLE$' do&#10;  path '$FILE$'&#10;  pattern '$PATT$'&#10;  line '$REPLACE$'&#10;end" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="TITLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REPLACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="log" value="log '$MESSAGE$' do&#10;  level :info&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="MESSAGE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="yum_package" value="yum_package '$PACKAGE$' do&#10;  $STUFF$&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="PACKAGE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="template" value="template '$FILE$' do&#10;  source '$SOURCE$'&#10;  owner '$OWNER$'&#10;  group '$OWNER$'&#10;  mode '$MODE$'&#10;  variables (&#10;    $VAR$ =&gt; '$VALUE$'&#10;  )&#10;end&#10;" toReformat="false" toShortenFQNames="true">
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SOURCE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OWNER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="service" value="service '$SERVICE$' do&#10;  action :enable&#10;  action :start&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="SERVICE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+</templateSet>
