@@ -31,16 +31,14 @@
       <option name="CHEF" value="true" />
     </context>
   </template>
-  <template name="lvm_volume_group" value="lvm_volume_group '$GROUP$' do&#10;  $STUFF$&#10;end" description="lvm_volume_group" toReformat="false" toShortenFQNames="true">
-    <variable name="GROUP" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
-    <context>
-      <option name="CHEF" value="true" />
-    </context>
-  </template>
-  <template name="execute" value="execute '$CURSOR$' do&#10;  action :nothing&#10;  $STUFF$&#10;end" description="excute" toReformat="false" toShortenFQNames="true">
+  <template name="execute" value="execute '$CURSOR$' do&#10;  command '$CMD$'&#10;  creates '$FILE$'&#10;  cwd '$DIR$'&#10;  user '$USER$'&#10;  group '$USER$'&#10;  path ['$PATH$']&#10;  returns [0]&#10;  timeout $TO$&#10;  action :nothing&#10;end" description="excute" toReformat="false" toShortenFQNames="true">
     <variable name="CURSOR" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CMD" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CHEF" value="true" />
     </context>
@@ -59,24 +57,8 @@
       <option name="CHEF" value="true" />
     </context>
   </template>
-  <template name="replace_or_add" value="replace_or_add '$TITLE$' do&#10;  path '$FILE$'&#10;  pattern '$PATT$'&#10;  line '$REPLACE$'&#10;end" description="" toReformat="false" toShortenFQNames="true">
-    <variable name="TITLE" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="PATT" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="REPLACE" expression="" defaultValue="" alwaysStopAt="true" />
-    <context>
-      <option name="CHEF" value="true" />
-    </context>
-  </template>
   <template name="log" value="log '$MESSAGE$' do&#10;  level :info&#10;end" toReformat="false" toShortenFQNames="true">
     <variable name="MESSAGE" expression="" defaultValue="" alwaysStopAt="true" />
-    <context>
-      <option name="CHEF" value="true" />
-    </context>
-  </template>
-  <template name="yum_package" value="yum_package '$PACKAGE$' do&#10;  $STUFF$&#10;end" toReformat="false" toShortenFQNames="true">
-    <variable name="PACKAGE" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CHEF" value="true" />
     </context>
@@ -94,6 +76,199 @@
   </template>
   <template name="service" value="service '$SERVICE$' do&#10;  action :enable&#10;  action :start&#10;end" toReformat="false" toShortenFQNames="true">
     <variable name="SERVICE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="bash" value="bash '$TITLE$' do&#10;  cwd '$CWD$'&#10;  code &lt;&lt;- EOH&#10;    $STUFF$&#10;  EOH&#10;  creates '$FILE$'&#10;  user '$USER$'&#10;  group '$USER$'&#10;  path ['$PATH$']&#10;  returns [0]&#10;  timeout $TO$&#10;  action :nothing&#10;end&#10;&#10;&#10;" toReformat="false" toShortenFQNames="true">
+    <variable name="TITLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CWD" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="chef_gem" value="chef_gem '$NAME$' do&#10;  clear_sources $TRUE$&#10;  version '$VERSION$'&#10;  source '$SOURCE$'&#10;end&#10;  " description="" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TRUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VERSION" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SOURCE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="cron" value="cron '$NAME$' do&#10;  command '$COMAND$'&#10;  interval '$INT$'&#10;  weekday '$WEEK$'&#10;  month '$MONTH$'&#10;  day '$DAY$'&#10;  hour '$HOUR$'&#10;  minute '$MINUTE$'&#10;  user '$USER$'&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMAND" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="INT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="WEEK" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MONTH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DAY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HOUR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MINUTE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="batch" value="batch '$NAME$' do&#10;  code &lt;&lt;- EOH&#10;    $STUFF$&#10;  end&#10;  cwd '$DIR$'&#10;  returns  [ 0 ]&#10;  timeout $TO$&#10;  user '$USER$'&#10;  group '$USER$'&#10;  creates '$FILE$'&#10;  action :nothing&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="gem_package" value="gem_package '$NAME$' do&#10;  clear_sources $TRUE$&#10;  gem_binary '$GEMBIN$'&#10;  source '$SRC$'&#10;  timeout $TO$&#10;  version '$VER$'&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TRUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="GEMBIN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SRC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="git" value="git '$GIT_LOC$' do&#10;  repository '$REPO$'&#10;  revision '$REV$'&#10;  timeout $TO$&#10;  user '$USER$'&#10;  group '$USER$'&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="GIT_LOC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REPO" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REV" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="group" value="group '$GROUP$' do&#10;  append $TRUE$&#10;  gid $GID$&#10;  members [ '$MEMBER$' ]&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="GROUP" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TRUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="GID" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MEMBER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="http_request" value="http_request '$MESSAGE$' do&#10;  headers {}&#10;  url '$URL$'&#10;  action :get&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="MESSAGE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="ifconfig" value="ifconfig 'name' do&#10;  bcast '$W$.$X$.$Y$.$Z$'&#10;  bootproto '$PROTO$'&#10;  device '$DEV$'&#10;  hwaddr '$HW_ADDR$'&#10;  inet_addr '$A$.$B$.$C$.$D$'&#10;  mask '$E$.$F$.$G$.$H$'&#10;  mtu '$MTU$'&#10;  network '$I$.$J$.$K$.$L$'&#10;  onboot '$ONBOOT$'&#10;  target '$M$.$N$.$O$.$P$'&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="W" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="X" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Y" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Z" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="A" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROTO" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DEV" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HW_ADDR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="B" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="C" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="D" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="E" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="F" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="G" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="H" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MTU" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="I" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="J" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="K" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="L" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ONBOOT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="M" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="N" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="O" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="P" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="mount" value="mount '$NAME$' do&#10;  device '$DEV$'&#10;  fstype '$TYPE$'&#10;  mount_point '$MOUNT_POINT$'&#10;  options ['default']&#10;  &#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DEV" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MOUNT_POINT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="ohai" value="ohai '$NAME$' do&#10;  plugin '$PLUGIN$'&#10;  action :reload&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PLUGIN" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="package" value="package '$NAME$' do&#10;  allow_downgrade '$FALSE$'&#10;  flush_cache [ :before, :after ]&#10;  options '$OPT$'&#10;  package_name '$PKG$'&#10;  source '$SRC$'&#10;  version '$VER$'&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FALSE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PKG" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SRC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="perl" value="perl '$NAME$' do&#10;  code &lt;&lt;- EOH&#10;    $STUFF$&#10;  EOH&#10;  creates '$FILE$'&#10;  cwd '$DIR$'&#10;  user '$USER$'&#10;  group '$USER$'&#10;  path ['$PATH$']&#10;  umask '$MASK$'&#10;  returns [0]&#10;  timeout $TO$&#10;  action :nothing&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MASK" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="python" value="python '$CURSOR$' do&#10;  code &lt;&lt;- EOH&#10;    $STUFF$&#10;  EOH&#10;  creates '$FILE$'&#10;  cwd '$DIR$'&#10;  user '$USER$'&#10;  group '$USER$'&#10;  path ['$PATH$']&#10;  returns [0]&#10;  timeout $TO$&#10;  action :nothing&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="CURSOR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STUFF" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="reboot" value="## USE WITH EXTREME CAUTION&#10;&#10;reboot '$NAME$' do&#10;  delay_mins $MIN$&#10;  reason '$REASON$'&#10;  action :nothing&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MIN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REASON" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="remote_directory" value="remote_directory '$DIR$' do&#10;  owner '$USER$'&#10;  group '$USER'&#10;  mode '$MODE$'&#10;  files_owner '$USER$'&#10;  files_group '$USER$'&#10;  files_mode '$MODE$'&#10;  overwrite true&#10;  purge false&#10;  recursive true&#10;  source '$SRC$'&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SRC" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="user" value="user '$NAME$' do&#10;  home '$DIR$'&#10;  manage_home true&#10;  password '$PASS$'&#10;  shell '$SHELL$'&#10;  comment '$COMMENT$'&#10;  system false&#10;  uid $UID$&#10;  action :create&#10;end" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PASS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SHELL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="UID" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CHEF" value="true" />
     </context>

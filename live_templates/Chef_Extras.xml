@@ -1,0 +1,177 @@
+<templateSet group="Chef_Extras">
+  <template name="lvm_volume_group" value="lvm_volume_group '$VG$' do&#10;  physical_volumes [ '$DEVS$' ]&#10;  physical_extent_size $KB$&#10;  logical_volume '$LV$' do&#10;    size '$SIZE$'&#10;    filesystem '$FSTPYPE$'&#10;    mount_point location: '$DIR$'&#10;    stripes $STRIPES$&#10;  end&#10;end" description="depneds lvm" toReformat="false" toShortenFQNames="true">
+    <variable name="VG" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DEVS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="KB" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LV" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SIZE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FSTPYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STRIPES" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="replace_or_add" value="replace_or_add '$TITLE$' do&#10;  path '$FILE$'&#10;  pattern '$PATT$'&#10;  line '$REPLACE$'&#10;end" description="depends line" toReformat="false" toShortenFQNames="true">
+    <variable name="TITLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FILE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REPLACE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="lvm_physical_volume" value="lvm_physical_volume '$NAME$' do&#10;  action :create&#10;end" description="depneds lvm" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="lvm_logical_volume" value="lvm_logical_volume '$NAME$' do&#10;  group '$VG$'&#10;  size '$SZ$'&#10;  filesystem '$FSTYPE$'&#10;  mount_point '$DIR$'&#10;  stripes $STRIPES$&#10;  stripe_size $KB$&#10;  mirrors $MIRRS$&#10;end" description="depends lvm" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VG" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SZ" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FSTYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="STRIPES" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="KB" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MIRRS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context />
+  </template>
+  <template name="append_if_no_line" value="append_if_no_line'$NAME$' do&#10;  path '$PATH$'&#10;  line '$LINE$'&#10;end&#10;" description="depends line" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LINE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="delete_lines" value="delete_lines '$NAME$' do&#10;  path '$PATH$'&#10;  pattern '$PATRN$'&#10;end&#10;" description="depneds line" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATRN" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="add_to_list" value="add_to_list '$NAME$' do&#10;  path '$PATH$'&#10;  pattern '$PATRN$'&#10;  delim ['$DILIM$']&#10;  entry '$ENTRY$'&#10;end&#10;" description="depneds line" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATRN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DILIM" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ENTRY" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="delete_from_list" value="delete_from_list '$NAME$' do&#10;  path '$PATH$'&#10;  pattern '$PATRN$'&#10;  delim ['$DILIMN$']&#10;  entry '$ENTRY$'&#10;end" description="depneds line" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATRN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DILIMN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ENTRY" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="ssh_known_hosts" value="ssh_known_hosts '$NAME$' do&#10;  user '$USER$'&#10;end" description="depends ssh" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="hostsfile_entry" value="hostsfile_entry '$NAME$' do&#10;  hostname  '$FQDN$'&#10;  aliases   ['$ALIAS$' ]&#10;  action    :append&#10;end" description="depends hostsfile" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FQDN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ALIAS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="jenkins_command" value="jenkins_command '$CMD$' do&#10;  action :nothing&#10;end" description="depends jenkins" toReformat="false" toShortenFQNames="true">
+    <variable name="CMD" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="jenkins_job" value="jenkins_job '$JOB$' do&#10;  config $XML$&#10;end" description="depends jenkins" toReformat="false" toShortenFQNames="true">
+    <variable name="JOB" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="XML" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="jenkins_plugin" value="jenkins_plugin '$PLUGIN$' do&#10;  version '$VER$'&#10;  source '$URL$'&#10;  install_deps true&#10;  options '$OPT$'&#10;  action [ :install, :enable ]&#10;end" description="depends jenkins" toReformat="false" toShortenFQNames="true">
+    <variable name="PLUGIN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="jenkins_jnlp_slave" value="jenkins_jnlp_slave '$NAME$' do&#10;  description '$DESC$'&#10;  remote_fs '$FS$'&#10;  labels ['$LABELS$']&#10;  environment(&#10;    $VAR$: '$VALUE$'&#10;  )&#10;  executors $EXEC$&#10;  usage_mode '$USAGE$'&#10;  availability '$AVAIL$'&#10;end" description="depends jenkins" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LABELS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="EXEC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USAGE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="AVAIL" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="jenkins_ssh_slave" value="jenkins_ssh_slave '$NAME$' do&#10;  description '$DESC$'&#10;  remote_fs '$FS$'&#10;  labels ['$LABELS$']&#10;  host '$HOST$'&#10;  user '$USER$'&#10;  credentials '$CRED$'&#10;end" description="depends jenkins" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LABELS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HOST" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CRED" expression="" defaultValue="" alwaysStopAt="true" />
+    <context />
+  </template>
+  <template name="jenkins_user" value="jenkins_user '$NAME$' do&#10;  full_name '$FULL_NAME$'&#10;  email '$EMAIL$'&#10;  public_keys ['$KEY$']&#10;end" description="depends jenkins" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FULL_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="EMAIL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="KEY" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="chef_handler" value="chef_handler '$NAME$' do&#10;  source '$SRC$'&#10;  arguments $ARGS$&#10;  action :nothing&#10;  supports :exception =&gt; true, :report =&gt; true&#10;end.run_action(:enable)&#10;" description="depends chef_handler" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SRC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ARGS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="logrotate_app" value="logrotate_app '$NAME$' do&#10;  path ['$PATH$']&#10;  frequency '$FREQ$'&#10;  rotate $ROT$&#10;  create '$MODE$ $USER$ $GROUP$'&#10;  options ['$OPT$']&#10;end" description="depneds logrotate" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FREQ" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ROT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="USER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="GROUP" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+  <template name="yum_repository" value="yum_repository '$NAME$' do&#10;  description '$DESC$'&#10;  baseurl '$URL$'&#10;  gpgkey '$GPGKEY$'&#10;  action :create&#10;end&#10;&#10;" description="depends yum" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="GPGKEY" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CHEF" value="true" />
+    </context>
+  </template>
+</templateSet>
