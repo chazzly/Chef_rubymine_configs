@@ -12,64 +12,77 @@ These will fill out the resource structure and fields for many common or require
 Tab / Shift+Tab to move between properties.  The properties for each reasource are rarely all inclusive, to avoid an exxesive amount of deleting.  I've tried to hit the required and/or useful ones.'
 
 ## Install
-copy files from 'live_templates' to "C:\Users\USER\\.RubyMine80\config\templates"
+#### Windows
+    copy files from 'live_templates' to "C:\Users\USER\.RubyMine<version>\config\templates"
+####mac
+    copy file from 'live_templates' to "/Users/USER/Library/Preferences/RubyMine<version>/templates"
+####Linux
+    copy file from 'live_templates' to "~/.RubyMine<version number>/config/templates"
 
 ## Live Templates for Chef Resources
-bash
-batch
-chef_gem
-cookbook_file
-cron
-directory
-execute
-file
-gem_package
-git
-group
-http_request
-ifconfig
-link
-log
-mount
-ohai
-package
-perl
-python
-reboot
-remote_directory
-remote_file
-ruby_block
-service
-template
-user
+<table>
+<tr><td>bash</td>
+<td>batch></td>
+<td>chef_gem</td>
+</tr>
+<tr><td>cookbook_file</td>
+<td>cron</td>
+<td>directory</td></tr>
+<tr><td>execute</td>
+<td>file</td>
+<td>gem_package</td></tr>
+<tr><td>git</td>
+<td>group</td>
+<td>http_request</td></tr>
+<tr><td>ifconfig</td>
+<td>link</td>
+<td>log</td></tr>
+<tr><td>mount</td>
+<td>ohai</td>
+<td>package</td></tr>
+<tr><td>perl</td>
+<td>python</td>
+<td>reboot</td></tr>
+<tr><td>remote_directory</td>
+<td>remote_file</td>
+<td>ruby_block</td></tr>
+<tr><td>service</td>
+<td>template</td>
+<td>user</td></tr>
+</table>
 
 ## Live Templates for LWRP's'
-add_to_list  (line)
-append_if_no_line (line)
-chef_handler (chef_handler
-delete_from_list (line)
-delete_lines (line)
-hostsfile_entry (hostsfile)
-jenkins_command (jenkins)
-jenkins_jnlp_slave (jenkins)
-jenkins_job (jenkins)
-jenkins_plugin (jenkins)
-jenkins_ssh_slave (jenkins)
-jenkins_user (jenkins)
-logrotate_app (logrotate)
-lvm_logical_volume (lvm)
-lvm_physical_volume (lvm)
-lvm_volume_group (lvm)
-replace_or_add (line)
-ssh_known_hosts (ssh)
-yum_repository (yum)
+<table>
+<tr><td>add_to_list  (line)</td>
+<td>append_if_no_line (line)</td>
+<td>chef_handler (chef_handler</td></tr>
+<tr><td>delete_from_list (line)</td>
+<td>delete_lines (line)</td>
+<td>hostsfile_entry (hostsfile)</td></tr>
+<tr><td>jenkins_command (jenkins)</td>
+<td>jenkins_jnlp_slave (jenkins)</td>
+<td>jenkins_job (jenkins)</td></tr>
+<tr><td>jenkins_plugin (jenkins)</td>
+<td>jenkins_ssh_slave (jenkins)</td>
+<td>jenkins_user (jenkins)</td></tr>
+<tr><td>logrotate_app (logrotate)</td>
+<td>lvm_logical_volume (lvm)</td>
+<td>lvm_physical_volume (lvm)</td></tr>
+<tr><td>lvm_volume_group (lvm)</td>
+<td>replace_or_add (line)</td>
+<td>ssh_known_hosts (ssh)</td></tr>
+<tr><td>yum_repository (yum)</td>
+</tr></table>
 
 ## Live Templates for ChefSpec
-describe
-it
-let
-shared_context
-shared_examples
+<table>
+<tr><td>describe</td>
+<td>expect</td>
+<td>it</td></tr>
+<tr><td>let</td>
+<td>shared_context</td>
+</td>shared_examples</td></tr>
+</table>
 
 # Contribute
 Submissions Welcome and encouraged.
